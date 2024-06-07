@@ -3,7 +3,7 @@
 const OauthEventPermissions = require("./permissions/oauthEvents")
 const loopback = require('loopback');
 const crypto = require('crypto');
-const parseDomain = require('parse-domain');
+const parseDomain = (...args) => import('parse-domain').then(({default: fetch}) => fetch(...args));
 
 
 const PERMISSION_ID_PREFIX = "permission_";

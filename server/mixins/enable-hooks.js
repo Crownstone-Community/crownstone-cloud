@@ -1,7 +1,7 @@
 "use strict";
 
 const loopback = require('loopback');
-const fetch = require('node-fetch');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const WebHookHandler = require('../modules/WebHookHandler');
 /**
  * Mixin that hooks the Webhook system into existing models. It generates a list of available events based on the REST endpoints.

@@ -5,7 +5,7 @@ let configRequiredPostfix = process.env.NODE_ENV;
 if (configRequiredPostfix === 'test') { process.env.NODE_ENV = 'local' }
 
 const luxon       = require('luxon')
-const fetch       = require('node-fetch');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const localConfig = require('../../config.' + (process.env.NODE_ENV || 'local'));
 const ToonUtil    = require('./ToonUtil')
 
